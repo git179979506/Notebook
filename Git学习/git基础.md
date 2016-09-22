@@ -372,3 +372,44 @@ $ git add README
 | --pretty | 使用其他格式显示历史提交信息。可用的选项包括 oneline，short，full，fuller 和 format（后跟指定格式）。 |
 | --oneline | `--pretty=oneline --abbrev-commit` 的简化用法。 |
 
+其他常用的类似选项。
+
+| 选项 | 说明 |
+| --- | --- |
+| -\(n\) | 仅显示最近的 n 条提交 |
+| --since, --after | 仅显示指定时间之后的提交。 |
+| --until, --before | 仅显示指定时间之前的提交。 |
+| --author | 仅显示指定作者相关的提交。 |
+| --committer | 仅显示指定提交者相关的提交。 |
+
+来看一个实际的例子，如果要查看 Git 仓库中，2008 年 10 月期间，Junio Hamano 提交的但未合并的测试脚本（位于项目的 t\/ 目录下的文件），可以用下面的查询命令：
+
+```
+$ git log --pretty="%h - %s" --author=gitster --since="2008-10-01" \
+ --before="2008-11-01" --no-merges -- t/
+
+5610e3b - Fix testcase failure when extended attribute
+acd3b9e - Enhance hold_lock_file_for_{update,append}()
+f563754 - demonstrate breakage of detached checkout wi
+d1a43f2 - reset --hard/read-tree --reset -u: remove un
+51a94af - Fix "checkout --track -b newbranch" on detac
+b0ad11e - pull: allow "git pull origin $something:$cur
+```
+
+Git 项目有 20,000 多条提交，但我们给出搜索选项后，仅列出了其中满足条件的 6 条。
+
+
+
+### 使用图形化工具查阅提交历史
+
+有时候图形化工具更容易展示历史提交的变化，随 Git 一同发布的 gitk 就是这样一种工具。它是用 Tcl\/Tk 写成的，基本上相当于 `git log` 命令的可视化版本，凡是 `git log` 可以用的选项也都能用在 gitk 上。在项目工作目录中输入 gitk 命令后，就会启动图 2-2 所示的界面。
+
+![](http://git-scm.com/figures/18333fig0202-tn.png)
+
+图 2-2. gitk 的图形界面
+
+上半个窗口显示的是历次提交的分支祖先图谱，下半个窗口显示当前点选的提交对应的具体差异。
+
+
+
+

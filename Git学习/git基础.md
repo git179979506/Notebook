@@ -335,7 +335,8 @@ $ git add README
     // 自定义格式
     $ git log --pretty=format:"%h - %an, %ar : %s"
 
-常用的格式占位符写法及其代表的意义：
+表 2-1 列出了常用的格式占位符写法及其代表的意义。
+
 | 选项 | 说明 |
 | --- | --- |
 | %H | 提交对象（commit）的完整哈希字串 |
@@ -354,7 +355,9 @@ $ git add README
 | %cr | 提交日期，按多久以前的方式显示 |
 | %s | 提交说明 |
 
+
 一些其他常用的选项及其释义。
+
 | 选项 | 说明 |
 | --- | --- |
 | -p | 按补丁格式显示每个更新之间的差异。 |
@@ -368,3 +371,4 @@ $ git add README
 | --graph | 显示 ASCII 图形表示的分支合并历史。 |
 | --pretty | 使用其他格式显示历史提交信息。可用的选项包括 oneline，short，full，fuller 和 format（后跟指定格式）。 |
 | --oneline | `--pretty=oneline --abbrev-commit` 的简化用法。 |
+

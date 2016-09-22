@@ -73,13 +73,17 @@ $ git init
 
 Git 支持许多数据传输协议。之前的例子使用的是 `git://` 协议，不过你也可以用 `http(s)://` 或者 `user@server:/path.git` 表示的 SSH 传输协议。
 
-##记录每次更新到仓库
-###检查当前文件状态
+## 记录每次更新到仓库
+
+### 检查当前文件状态
+
+工作目录相当干净
 ```
 $ git status
 On branch master
 nothing to commit, working directory clean
 ```
+有文件未跟踪
 ```
 $ vim README
 $ git status
@@ -92,6 +96,48 @@ Untracked files:
 nothing added to commit but untracked files present (use "git add" to track)
 ```
 
+文件以暂存
+```
+$ git status
+On branch master
+Changes to be committed:
+ (use "git reset HEAD <file>..." to unstage)
+
+ new file: README
+```
+已跟踪文件发生变化
+```
+$ git status
+On branch master
+Changes to be committed:
+ (use "git reset HEAD <file>..." to unstage)
+
+ new file: README
+
+Changes not staged for commit:
+ (use "git add <file>..." to update what will be committed)
+ (use "git checkout -- <file>..." to discard changes in working directory)
+
+ modified: benchmarks.rb
+```
+
+以暂存文件再次修改，此时提交会提交修改之前的版本
+```
+$ vim benchmarks.rb
+$ git status
+On branch master
+Changes to be committed:
+ (use "git reset HEAD <file>..." to unstage)
+
+ new file: README
+ modified: benchmarks.rb
+
+Changes not staged for commit:
+ (use "git add <file>..." to update what will be committed)
+ (use "git checkout -- <file>..." to discard changes in working directory)
+
+ modified: benchmarks.rb
+```
 
 
 

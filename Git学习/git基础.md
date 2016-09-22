@@ -77,13 +77,18 @@ Git 支持许多数据传输协议。之前的例子使用的是 `git://` 协议
 
 ### 检查当前文件状态
 
+使用`git status`命令
+
 工作目录相当干净
+
 ```
 $ git status
 On branch master
 nothing to commit, working directory clean
 ```
+
 有文件未跟踪
+
 ```
 $ vim README
 $ git status
@@ -97,6 +102,7 @@ nothing added to commit but untracked files present (use "git add" to track)
 ```
 
 文件以暂存
+
 ```
 $ git status
 On branch master
@@ -105,7 +111,9 @@ Changes to be committed:
 
  new file: README
 ```
+
 已跟踪文件发生变化
+
 ```
 $ git status
 On branch master
@@ -122,6 +130,7 @@ Changes not staged for commit:
 ```
 
 以暂存文件再次修改，此时提交会提交修改之前的版本
+
 ```
 $ vim benchmarks.rb
 $ git status
@@ -139,5 +148,10 @@ Changes not staged for commit:
  modified: benchmarks.rb
 ```
 
-
+###跟踪新文件
+使用`git add`命令
+这是个多功能命令，根据目标文件的状态不同，此命令的效果也不同：
+- 可以用它开始跟踪新文件
+- 或者把已跟踪的文件放到暂存区
+- 还能用于合并时把有冲突的文件标记为已解决状态等
 

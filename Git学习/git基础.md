@@ -29,14 +29,15 @@ $ git config --global core.editor emacs
 $ git config --global merge.tool vimdiff
 ```
 
-###查看配置信息
+### 查看配置信息
 
 ```
 $ git config --list
 $ git config user.name
 ```
 
-##获取帮助
+## 获取帮助
+
 了解Git的各式工具该怎么用的三种方法
 
 ```
@@ -48,7 +49,8 @@ $ man git-<verb>
 $ git help config
 ```
 
-##取得项目的Git仓库
+## 取得项目的Git仓库
+
 有两种取得 Git 项目仓库的方法。第一种是在现存的目录下，通过导入所有文件来创建新的 Git 仓库。第二种是从已有的 Git 仓库克隆出一个新的镜像仓库来。
 
 ### 在工作目录中初始化新仓库
@@ -56,21 +58,39 @@ $ git help config
 ```
 $ git init
 ```
+
 初始化后，在当前目录下会出现一个名为 .git 的目录，所有 Git 需要的数据和资源都存放在这个目录中。不过目前，仅仅是按照既有的结构框架初始化好了里边所有的文件和目录，但我们还没有开始跟踪管理项目中的任何一个文件。
 
 ### 从现有仓库克隆
+
 如果希望在克隆的时候，自己定义要新建的项目目录名称，可以在上面的命令末尾指定新的名字
 
-```
-// 这会在当前目录下创建一个名为`grit`的目录，其中包含一个 `.git` 的目录，用于保存下载下来的所有版本记录，然后从中取出最新版本的文件拷贝。
-$ git clone git://github.com/schacon/grit.git
+    // 这会在当前目录下创建一个名为`grit`的目录，其中包含一个 `.git` 的目录，用于保存下载下来的所有版本记录，然后从中取出最新版本的文件拷贝。
+    $ git clone git://github.com/schacon/grit.git
 
-// 如果希望在克隆的时候，自己定义要新建的项目目录名称，可以在上面的命令末尾指定新的名字 
-$ git clone git://github.com/schacon/grit.git mygrit
-```
+    // 如果希望在克隆的时候，自己定义要新建的项目目录名称，可以在上面的命令末尾指定新的名字 
+    $ git clone git://github.com/schacon/grit.git mygrit
 
 Git 支持许多数据传输协议。之前的例子使用的是 `git://` 协议，不过你也可以用 `http(s)://` 或者 `user@server:/path.git` 表示的 SSH 传输协议。
 
+##记录每次更新到仓库
+###检查当前文件状态
+```
+$ git status
+On branch master
+nothing to commit, working directory clean
+```
+```
+$ vim README
+$ git status
+On branch master
+Untracked files:
+ (use "git add <file>..." to include in what will be committed)
+
+ README
+
+nothing added to commit but untracked files present (use "git add" to track)
+```
 
 
 

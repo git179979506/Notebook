@@ -15,9 +15,14 @@ $ git config --global user.email "email"
 ### 文本编辑器
 
 修改默认的编辑器（mac是vim？）
+
 ```
 // 例如修改为Emacs
 $ git config --global core.editor emacs
 ```
+
+### 差异分析工具
+
+在解决冲突时使用哪种差异分析工具。Git 可以理解 kdiff3，tkdiff，meld，xxdiff，emerge，vimdiff，gvimdiff，ecmerge，和 opendiff 等合并工具的输出信息。
 
 

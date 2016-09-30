@@ -96,6 +96,8 @@ eclipse、Deamwaver、**WebStorm**
   - 标签选择器：根据标签名找到标签
   - 类选择器：
   - id选择器：
+  - 并列选择器：
+
   ```CSS
   /* 标签选择器 */
   div {
@@ -103,11 +105,23 @@ eclipse、Deamwaver、**WebStorm**
   }
 
   /* 类选择器 */
-  /* <p clss="test">段落</p> */
   .test {
      color: green;
   }
   
+
+  /* id选择器 */
+  #main {
+      font-size: 40px;
+  }
+
+  /* 并列选择器 */
+  div , .high {
+      color: red;
+  }
+
+  <p clss="test">段落</p>
+  <p id="main">段落</p>
   ```
  
 

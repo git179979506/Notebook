@@ -96,8 +96,13 @@ eclipse、Deamwaver、**WebStorm**
   - 标签选择器：根据标签名找到标签
   - 类选择器：
   - id选择器：
-  - 并列选择器：
-
+  - 并列选择器：逻辑或
+  - 复合选择器：逻辑与，标签选择器开头
+  - 后代选择器：儿子、孙子...
+  - 直接后代选择器：儿子
+  - 相邻兄弟选择器
+  - 属性选择器
+  
   ```CSS
   /* 标签选择器 */
   div {
@@ -108,8 +113,7 @@ eclipse、Deamwaver、**WebStorm**
   .test {
      color: green;
   }
-  
-
+ 
   /* id选择器 */
   #main {
       font-size: 40px;
@@ -119,9 +123,39 @@ eclipse、Deamwaver、**WebStorm**
   div , .high {
       color: red;
   }
+  
+  /* 复合选择器 */
+  p.test {
+      background-color: yellow;
+  }
+
+  /* 后代选择器 */
+  div p {
+      color: red;
+  }
+
+  /* 直接后代选择器 */
+  div > a {
+      color: green;
+  }
+
+  /* 相邻兄弟选择器 */
+  div + p {
+  }
+ 
+  /* 属性选择器 */  
+  div[name] {
+  }
+  
+  div[name="jack"] {
+  }
+
+  div[name][age] {
+  }
 
   <p clss="test">段落</p>
+  <div clss="test" name="jack">段落</div>
   <p id="main">段落</p>
   ```
- 
-
+  - 伪类
+  ![](Snip20160930_4.png)

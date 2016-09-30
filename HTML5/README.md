@@ -158,4 +158,4 @@ eclipse、Deamwaver、**WebStorm**
   <p id="main">段落</p>
   ```
   - 伪类
-  ![](Snip20160930_4.png)
+  

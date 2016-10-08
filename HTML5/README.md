@@ -302,14 +302,15 @@ eclipse、Deamwaver、**WebStorm**
   * 内容（content）
     ![](/assets/Snip20161008_4.png)
   * 填充（padding，内边距）
+    ![](/assets/Snip20161008_5.png)
+    ![](/assets/Snip20161008_6.png)
   * 边框（border）
   * 边界（margin，外边距）
 
 * 标准的盒子模型
   ![](/assets/Snip20161008_1.png)
 
-- IE盒子模型
+* IE盒子模型
   ![](/assets/Snip20161008_2.png)
-
 
 

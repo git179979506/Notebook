@@ -1,4 +1,4 @@
-eclipse、Deamwaver、**WebStorm**
+ eclipse、Deamwaver、**WebStorm**
 
 ### Web3.0
 
@@ -190,6 +190,7 @@ eclipse、Deamwaver、**WebStorm**
     ![](/assets/Snip20160930_7.png)
 
 
+
 * important
 
   ```CSS
@@ -249,10 +250,12 @@ eclipse、Deamwaver、**WebStorm**
 #### 根据继承性区分
 
 * 可继承属性
+
   * 父标签的属性值会传递给子标签
   * 一般是文字控制属性
 
 * 不可继承属性
+
   * 父标签的属性值不会传递给子标签
   * 一般是区块控制属性
 
@@ -278,8 +281,26 @@ eclipse、Deamwaver、**WebStorm**
   ```
 
 * 不可继承属性
+
   ```
   display、margin、border、padding、background
+  height、min-height、max-height、width、min-width、max-width
+  overflow、position、left、right、top、bottom、z-index
+  float、clear
+  table-layout、vertical-align
+  page-break-after、page-break-before
+  unicode-bidi
   ```
 
+###盒子模型
+> content：内容 padding：内边距 border：边框 margin：外边距
+
+- 四个属性
+  - 内容（content）
+  - 填充（padding，内边距）
+  - 边框（border）
+  - 边界（margin，外边距）
+
+- 标准的盒子模型
+  ![](/assets/Snip20161008_1.png)
 

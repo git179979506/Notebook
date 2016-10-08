@@ -305,7 +305,10 @@ eclipse、Deamwaver、**WebStorm**
     ![](/assets/Snip20161008_5.png)
     ![](/assets/Snip20161008_6.png)
   * 边框（border）
+    ![](/assets/Snip20161008_7.png)
   * 边界（margin，外边距）
+    ![](/assets/Snip20161008_8.png)
+    ![](/assets/Snip20161008_9.png)
 
 * 标准的盒子模型
   ![](/assets/Snip20161008_1.png)

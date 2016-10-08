@@ -83,9 +83,11 @@ eclipse、Deamwaver、**WebStorm**
     ```
 
   * 外部样式：在单独的CSS文件中书写，然后在网页中用link标签引用
+
     ```
     <link rel="stylesheet" href="index.css">
     ```
+
 
 
 * CSS的规律
@@ -179,11 +181,14 @@ eclipse、Deamwaver、**WebStorm**
 
   * 相同的类型的选择器遵循：a.就近原则 b.叠加原则
   * 不同类型的类型的选择器遵循：
+
     * important &gt; 内联 &gt; id &gt; 类 \| 伪类 \| 属性选择 \| 伪元素 &gt; 标签 &gt; 通配符 &gt; 继承
 
   * 选择器的针对性越强，它的优先级越高
+
   * 权值：选择器的权值加到一起，大的优先，如果权值相同，后定义的优先
     ![](/assets/Snip20160930_7.png)
+
 
 * important
 
@@ -204,6 +209,77 @@ eclipse、Deamwaver、**WebStorm**
   * {
      font-size: 30px;
   }
+  ```
+
+
+### HTML标签的类型
+
+#### 标签类型
+
+* 块级标签
+
+  * 独占一行
+  * 能随时设置宽度和高度
+  * 比如：div、p、h1、h2、ul、li
+
+* 行内标签（内联标签）
+
+  * 多个行内标签能同时显示在一行
+  * 宽度和高度取决于内容的尺寸
+  * 比如：span、a、label
+
+* 行内-块级标签（内联-块级标签）
+
+  * 多个行内-块级标签可以显示在同一行
+  * 能随时设置宽度和高度
+  * 比如：input、button
+
+
+#### 修改标签的显示类型
+
+* CSS中的display属性能修改标签的显示类型
+  * none：隐藏标签
+  * block：让标签变为块级标签
+  * inline：让标签变为行内标签
+  * inline-block：让标签变为行内块级标签
+
+
+### CSS属性
+
+#### 根据继承性区分
+
+* 可继承属性
+  * 父标签的属性值会传递给子标签
+  * 一般是文字控制属性
+
+* 不可继承属性
+  * 父标签的属性值不会传递给子标签
+  * 一般是区块控制属性
+
+
+#### 常见属性
+
+* 所有标签可继承
+
+  ```
+  visibility、cursor
+  ```
+
+* 内联标签可继承
+
+  ```
+  line-height、color、font、font-family、font-size、font-weight、text-decoration
+  ```
+
+* 列表标签可继承
+
+  ```
+  list-style
+  ```
+
+* 不可继承属性
+  ```
+  display、margin、border、padding、background
   ```
 
 

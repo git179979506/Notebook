@@ -1,4 +1,4 @@
- eclipse、Deamwaver、**WebStorm**
+eclipse、Deamwaver、**WebStorm**
 
 ### Web3.0
 
@@ -292,15 +292,23 @@
   unicode-bidi
   ```
 
-###盒子模型
+
+### 盒子模型
+
 > content：内容 padding：内边距 border：边框 margin：外边距
 
-- 四个属性
-  - 内容（content）
-  - 填充（padding，内边距）
-  - 边框（border）
-  - 边界（margin，外边距）
+* 四个属性
 
-- 标准的盒子模型
+  * 内容（content）
+  * 填充（padding，内边距）
+  * 边框（border）
+  * 边界（margin，外边距）
+
+* 标准的盒子模型
   ![](/assets/Snip20161008_1.png)
+
+- IE盒子模型
+  ![](/assets/Snip20161008_2.png)
+
+
 

@@ -300,6 +300,7 @@ eclipse、Deamwaver、**WebStorm**
 * 四个属性
 
   * 内容（content）
+    ![](/assets/Snip20161008_4.png)
   * 填充（padding，内边距）
   * 边框（border）
   * 边界（margin，外边距）

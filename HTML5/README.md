@@ -317,6 +317,7 @@ eclipse、Deamwaver、**WebStorm**
   ![](/assets/Snip20161008_2.png)
 
 * 清除系统默认的值
+
   ```CSS
   *{
       margin: 0;
@@ -324,19 +325,28 @@ eclipse、Deamwaver、**WebStorm**
   }
   ```
 
-###CSS3新增的特性
-- RGBA透明度
-- 块阴影与圆角阴影 `box-shadow`、`text-shadow`
-- 圆角 `border-radius`
-- 边框图片 `border-image`
-- 形变`transform: none | <transform-function>[<transform-fuction>]`
 
-###CSS布局
-- 默认情况下，所有网页标签都在标准流布局中
-  - 从上到下，从左到右
+### CSS3新增的特性
 
-- 脱离标准流的方法
-  - float属性
+* RGBA透明度
+* 块阴影与圆角阴影 `box-shadow`、`text-shadow`
+* 圆角 `border-radius`
+* 边框图片 `border-image`
+* 形变`transform: none | <transform-function>[<transform-fuction>]`
+
+### CSS布局
+
+* 默认情况下，所有网页标签都在标准流布局中
+
+  * 从上到下，从左到右
+
+* 脱离标准流的方法
+
+  * float属性
     ![](/assets/Snip20161008_10.png)
-  - position属性 和 left、right、top、bottom属性
+  * position属性 和 left、right、top、bottom属性(子绝父相)
+    ![](/assets/Snip20161008_11.png)
+
+  > 任何一种类型的标签一旦脱离标准流，就会被强制转为行内-块级标签
+
 

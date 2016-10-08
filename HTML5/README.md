@@ -50,23 +50,25 @@ eclipse、Deamwaver、**WebStorm**
 
 * CSS的编写格式是键值对的形式
 
+  * 冒号:左边是属性名，右边是属性值
+
   ```css
   color: red
   background-color: blue
   font-size: 20px
   ```
 
-  * 冒号:左边是属性名，右边是属性值
-
 * CSS的3种书写形式
 
   * 行内样式（内联样式）：直接在标签的style属性中书写
+
     ```
     <body style="color: red;">
     ```
 
   * 页内样式：在本网页的style标签中书写
-    ```
+
+    ```css
     <style>
         body {
             color: red;
@@ -79,34 +81,39 @@ eclipse、Deamwaver、**WebStorm**
         }
     </style>
     ```
-  - 外部样式：在单独的CSS文件中书写，然后在网页中用link标签引用
-  ```
-  <link rel="stylesheet" href="index.css">
-  ```
 
-- CSS的规律
-  - 就近原则（相同的）
-  - 叠加原则（不同的）
+  * 外部样式：在单独的CSS文件中书写，然后在网页中用link标签引用
+    ```
+    <link rel="stylesheet" href="index.css">
+    ```
 
-- CSS的两大重点
- - 属性：通过属性的复杂叠加才能做出漂亮的网页
- - 选择器：通过选择器找到对应的标签设置样式
 
-- CSS常用选择器 
-  - 标签选择器：根据标签名找到标签
-  - 类选择器：类能有多个
-  - id选择器：id只能有一个，不能重复
-  - 并列选择器：逻辑或
-  - 复合选择器：逻辑与，标签选择器开头
-  - 后代选择器：儿子、孙子...
-  - 直接后代选择器：儿子
-  - 相邻兄弟选择器
-  - 属性选择器
-  - 伪类：当你执行某些操作时触发
-  ![](/assets/Snip20160930_4.png)
-  - 伪元素
-  ![](/assets/Snip20160930_6.png)
-  
+* CSS的规律
+
+  * 就近原则（相同的）
+  * 叠加原则（不同的）
+
+* CSS的两大重点
+
+  * 属性：通过属性的复杂叠加才能做出漂亮的网页
+  * 选择器：通过选择器找到对应的标签设置样式
+
+* CSS常用选择器
+
+  * 标签选择器：根据标签名找到标签
+  * 类选择器：类能有多个
+  * id选择器：id只能有一个，不能重复
+  * 并列选择器：逻辑或
+  * 复合选择器：逻辑与，标签选择器开头
+  * 后代选择器：儿子、孙子...
+  * 直接后代选择器：儿子
+  * 相邻兄弟选择器
+  * 属性选择器
+  * 伪类：当你执行某些操作时触发
+    ![](/assets/Snip20160930_4.png)
+  * 伪元素
+    ![](/assets/Snip20160930_6.png)
+
   > 例子
 
   ```CSS
@@ -119,7 +126,7 @@ eclipse、Deamwaver、**WebStorm**
   .test {
      color: green;
   }
- 
+
   /* id选择器 */
   #main {
       font-size: 40px;
@@ -129,7 +136,7 @@ eclipse、Deamwaver、**WebStorm**
   div , .high {
       color: red;
   }
-  
+
   /* 复合选择器 */
   p.test {
       background-color: yellow;
@@ -148,11 +155,11 @@ eclipse、Deamwaver、**WebStorm**
   /* 相邻兄弟选择器 */
   div + p {
   }
- 
+
   /* 属性选择器 */  
   div[name] {
   }
-  
+
   div[name="jack"] {
   }
 
@@ -168,29 +175,35 @@ eclipse、Deamwaver、**WebStorm**
   <p id="main">段落</p>
   ```
 
-- CSS选择器优先级
-  - 相同的类型的选择器遵循：a.就近原则 b.叠加原则
-  - 不同类型的类型的选择器遵循：
-    - important \> 内联 > id \> 类 | 伪类 | 属性选择 | 伪元素 \> 标签 \> 通配符 \> 继承
-  - 选择器的针对性越强，它的优先级越高
-  - 权值：选择器的权值加到一起，大的优先，如果权值相同，后定义的优先
-  ![](/assets/Snip20160930_7.png)
+* CSS选择器优先级
 
-- important
+  * 相同的类型的选择器遵循：a.就近原则 b.叠加原则
+  * 不同类型的类型的选择器遵循：
+    * important &gt; 内联 &gt; id &gt; 类 \| 伪类 \| 属性选择 \| 伪元素 &gt; 标签 &gt; 通配符 &gt; 继承
+
+  * 选择器的针对性越强，它的优先级越高
+  * 权值：选择器的权值加到一起，大的优先，如果权值相同，后定义的优先
+    ![](/assets/Snip20160930_7.png)
+
+* important
+
   ```CSS
   div { /* 权值：1 */
       color: red !important;
   }
   ```
 
-- 通配符
- ```CSS
- /*
- 通配符：
+* 通配符
+
+  ```CSS
+  /*
+  通配符：
      1、优先级别非常低
      2、性能比较差
- */
- * {
+  */
+  * {
      font-size: 30px;
- }
- ```
+  }
+  ```
+
+

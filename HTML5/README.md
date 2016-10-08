@@ -344,9 +344,15 @@ eclipse、Deamwaver、**WebStorm**
 
   * float属性
     ![](/assets/Snip20161008_10.png)
-  * position属性 和 left、right、top、bottom属性(子绝父相)
+  * position属性 和 left、right、top、bottom属性\(子绝父相\)
     ![](/assets/Snip20161008_11.png)
 
   > 任何一种类型的标签一旦脱离标准流，就会被强制转为行内-块级标签
 
+###居中
+- 所有标签水平居中
+  - 行内标签 和 行内-块级标签：在父标签中设置 `text-align: center;`
+  - 块级标签：在自身设置 `margin: 0 auto;`
 
+- 所有标签垂直居中
+  - 

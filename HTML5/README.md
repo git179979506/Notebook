@@ -316,6 +316,9 @@ eclipse、Deamwaver、**WebStorm**
 * IE盒子模型
   ![](/assets/Snip20161008_2.png)
 
+* `box-sizing`属性
+  * 默认值`content-box`  设置为`border-box`就类似IE盒子模型？
+
 * 清除系统默认的值
 
   ```CSS
@@ -355,4 +358,25 @@ eclipse、Deamwaver、**WebStorm**
   - 块级标签：在自身设置 `margin: 0 auto;`
 
 - 所有标签垂直居中
-  - 
+  - 行内标签 和 行内-块级标签：在父标签中设置 `line-height`
+  - 块级标签：用`positon`和`transform`
+
+- 图片居中
+  - vertical-align
+
+###CSS引入字体
+  ```CSS
+  @font-face {
+      font-family: '';
+      scr: url('../');
+  }
+  ```
+
+###监听屏幕宽度
+  ```CSS
+  @media screen and （max-width: 1000px） {
+      div {
+          /*code...*/
+      }
+  }
+  ```

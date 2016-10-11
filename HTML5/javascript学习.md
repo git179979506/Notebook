@@ -296,3 +296,43 @@ btn.onclick = function () {
     <script src="index2.js"></script>
 </body>
 ```
+
+###常用事件（适当的时候可以使用伪类）
+```
+// 页面加载完毕
+window.onload = function () {
+    // code...
+}
+
+// 鼠标操作 
+img.onmouseover = function () {
+    console.log('进入');
+}
+img.onmousemove = function () {
+    console.log('移动');
+}    
+img.onmouseout = function () {
+    console.log('离开');
+}
+```
+
+###JS中的CRUD
+```js
+document.write('hello world');
+
+var main = document.getElementById('main');
+var img = document.createElement('img');
+img.src = 'image/img_01.jpg';
+main.appendChild(img);
+
+img.remove();
+
+getElementBy...
+
+console.log(main.childNodes);
+```
+
+###JS
+```js
+类型比较：===
+```

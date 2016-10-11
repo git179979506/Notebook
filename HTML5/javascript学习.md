@@ -47,6 +47,7 @@
 
 
 ### JS的常用语法
+
 ```js
 // 1.基本语法
 var age = 18; // number
@@ -107,7 +108,8 @@ var minNum = Math.min.apply(this, numsArr);
 console.log(minNum);
 ```
 
-###JS中常见函数定义、调用
+### JS中常见函数定义、调用
+
 ```js
 // 1.1 加法运算（两个数）
 // 定义
@@ -122,7 +124,7 @@ console.log(result);
 // 1.2 万能的加法函数
 function sum2(numbersArray) {
     var result = 0;
-    
+
     for (var i in numbersArray) {
         result += numbersArray[i];
     }
@@ -140,7 +142,8 @@ var res = function () {
 res();
 ```
 
-###JS中创建对象
+### JS中创建对象
+
 ```js
 // 1.创建对象
 var dog = {}；
@@ -213,5 +216,83 @@ var Dog1 = function (name, age) {
 var dog3 = new Dog1('旺财1', 2);
 ```
 
-###JS中的内置对象
+### JS中的两大内置对象
+####window
+```js
+// 1.第一大作用:
+// 1.1 所用的全局变量都是window的属性
+var age = 17;
+console.log(age);
+console.log(window.age);
 
+// 1.2 所有的全局函数都是window的方法
+function Dog () {
+    console.log(‘这是一条可爱的狗’);
+}
+Dog();
+window.Dog();
+window.alert('哈哈');
+window.console.log('全局的');
+
+// 练习
+function Person {
+    console.log(this);
+}
+
+Person(); // this --> window
+new Persion(); // this --> Person
+
+// 2.第二大作用
+// 2.1  动态的跳转(协议拦截)
+window.location.href = 'http://www.baidu.com';
+window.location.href = 'app://openCamera?user=zhangsan';
+```
+
+####document(DOM操作)
+```js
+// 作用
+// 1.可以动态获取网页中所有的标签（节点）
+// 2.可以对获取到的标签进行CRUD
+
+document.write('你好，世界');
+document.write('<input type="file">');
+
+// 常用操作 index.js
+function changeImg () {
+    // 1.获取网页中的图像标签
+    var img = document.getElementByClassName('icon')[0];
+    // 改变src属性
+    img.src = 'image/img_02';
+}
+
+// 这样的情况就需要把script标签放在body的尾部 index2.js
+var img = document.getElementByClassName('icon')[0];
+var p = document.getElementById('word');
+var btn = document.getElementByTagName('button')[0];
+btn.onclick = function () {
+    if (btn.innerText == '隐藏') {
+        // 隐藏 css属性 style display
+        p.style.display = 'none';
+        icon.style.display = 'none';
+        btn.innerText = '显示';
+    } else {
+        p.style.display = 'block';
+        icon.style.display = 'inline-block';
+        btn.innerText = '隐藏';
+    }
+}
+```
+
+```
+<head>
+    <script src="index.js"></script>
+</head>
+<body>
+    <img class="icon" src="image/img_01.png" />
+    <p id="word">这里风景很美</p>
+    <p></p>
+    <button onclick="changeImg();">更改图片</button>
+
+    <script src="index2.js"></script>
+</body>
+```

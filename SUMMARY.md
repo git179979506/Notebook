@@ -13,6 +13,7 @@
         * [2.交换方法](iOS学习/Runtime/2交换方法.md)
 * [HTML5](HTML5/README.md)
     * [JavaScript学习](HTML5/javascript学习.md)
+    * [认识jQuery](HTML5/认识jquery.md)
 * [Git学习](Git学习/README.md)
     * [Git基础](Git学习/git基础.md)
 

@@ -11,6 +11,8 @@
     * [Runtime](iOS学习/Runtime/README.md)
         * [1.发送消息](iOS学习/Runtime/1发送消息.md)
         * [2.交换方法](iOS学习/Runtime/2交换方法.md)
+    * [控制器](iOS学习/控制器/README.md)
+        * [View Controller Programming Guide for iOS](iOS学习/控制器/View Controller Programming Guide for iOS.md)
 * [HTML5](HTML5/README.md)
     * [JavaScript学习](HTML5/javascript学习.md)
     * [认识jQuery](HTML5/认识jquery.md)

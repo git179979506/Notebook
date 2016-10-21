@@ -14,6 +14,7 @@
         * [2.交换方法](iOS学习/Runtime/2交换方法.md)
         * [3.动态添加方法](iOS学习/Runtime/3动态添加方法.md)
         * [4.动态添加属性](iOS学习/Runtime/4动态添加属性.md)
+        * [5.字典转模型](iOS学习/Runtime/5字典转模型.md)
     * [控制器](iOS学习/控制器/README.md)
         * [View Controller Programming Guide for iOS](iOS学习/控制器/View Controller Programming Guide for iOS.md)
 * [HTML5](HTML5/README.md)

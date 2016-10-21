@@ -8,6 +8,7 @@
         * [新特性相关](iOS学习/开发随笔/新特性相关.md)
         * [几个方法](iOS学习/开发随笔/几个方法.md)
         * [常见的宏](iOS学习/开发随笔/常见的宏.md)
+        * [编程思想](iOS学习/开发随笔/编程思想.md)
     * [Runtime](iOS学习/Runtime/README.md)
         * [1.发送消息](iOS学习/Runtime/1发送消息.md)
         * [2.交换方法](iOS学习/Runtime/2交换方法.md)

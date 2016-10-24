@@ -21,6 +21,7 @@
         * [5.字典转模型](iOS学习/Runtime/5字典转模型.md)
     * [控制器](iOS学习/控制器/README.md)
         * [View Controller Programming Guide for iOS](iOS学习/控制器/View Controller Programming Guide for iOS.md)
+        * [父子关系](iOS学习/控制器/父子关系.md)
 * [HTML5](HTML5/README.md)
     * [JavaScript学习](HTML5/javascript学习.md)
     * [认识jQuery](HTML5/认识jquery.md)

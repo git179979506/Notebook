@@ -14,7 +14,7 @@
             * [super、superClass、class](iOS学习/开发随笔/实用知识/super、superclass、class.md)
             * [项目恶心BUG](iOS学习/开发随笔/实用知识/项目恶心bug.md)
             * [常用关键字](iOS学习/开发随笔/实用知识/常用关键字.md)
-            * Geometry（几何学）
+            * [Geometry（几何学）](iOS学习/开发随笔/实用知识/geometry（几何学）.md)
     * [Runtime](iOS学习/Runtime/README.md)
         * [1.发送消息](iOS学习/Runtime/1发送消息.md)
         * [2.交换方法](iOS学习/Runtime/2交换方法.md)

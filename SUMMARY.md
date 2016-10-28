@@ -24,6 +24,8 @@
     * [控制器](iOS学习/控制器/README.md)
         * [View Controller Programming Guide for iOS](iOS学习/控制器/View Controller Programming Guide for iOS.md)
         * [父子关系](iOS学习/控制器/父子关系.md)
+    * [设计模式](iOS学习/设计模式/README.md)
+        * [通知](iOS学习/设计模式/通知的使用.md)
 * [HTML5](HTML5/README.md)
     * [JavaScript学习](HTML5/javascript学习.md)
     * [认识jQuery](HTML5/认识jquery.md)

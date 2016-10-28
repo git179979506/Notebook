@@ -11,10 +11,10 @@ NSNotificationCenter对象（或简称为通知中心）提供用于在程序内
 ```
 
 ###监听通知
-- [\- addObserverForName:object:queue:usingBlock:](./监听者管理.md#1)
-- [\- addObserver:selector:name:object:](./监听者管理.md#2)
-- [\- removeObserver:](./监听者管理.md#3)
-- [\- removeObserver:name:object:](./监听者管理.md#4)
+- [\- addObserverForName:object:queue:usingBlock:](./监听者管理.md#m1)
+- [\- addObserver:selector:name:object:](./监听者管理.md#m2)
+- [\- removeObserver:](./监听者管理.md#m3)
+- [\- removeObserver:name:object:](./监听者管理.md#m4)
 
 
 ###移除监听者

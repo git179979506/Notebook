@@ -29,6 +29,8 @@
     * [设计模式](iOS学习/设计模式/README.md)
         * [通知](iOS学习/设计模式/通知/README.md)
             * [监听者管理](iOS学习/设计模式/通知/监听者管理.md)
+    * [实用技术](iOS学习/实用技术/README.md)
+        * [Block](iOS学习/实用技术/block.md)
 * [HTML5](HTML5/README.md)
     * [JavaScript学习](HTML5/javascript学习.md)
     * [认识jQuery](HTML5/认识jquery.md)

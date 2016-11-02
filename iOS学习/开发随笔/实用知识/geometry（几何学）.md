@@ -7,7 +7,18 @@
   在布局操作期间使用此矩形来确定视图的大小和位置。
   设置此属性将相应地更改center属性指定的点和bounds矩形中的大小。 
   frame矩形的坐标总是以点指定。
+
+  更改frame矩形会自动重新显示接收器，而不调用drawRect:方法。
+  如果想要在框架矩形更改时调用drawRect:方法，请将contentMode属性设置为UIViewContentModeRedraw。
+  
+  对此属性的更改可以进行动画处理。
+  但是，如果transform属性包含非identity变换，则frame属性的值是未定义的，不应该修改。
+  在这种情况下，您可以使用center属性重新定位视图，然后使用bounds属性调整大小。
   ```
+ > __警告__
+ >
+ > 如果transform属性不是identity变换，那么此属性的值是未定义的，因此应该被忽略。
+
 
 - bounds:描述`视图(可视范围)`在其自身坐标系中的位置和大小。
   ```
@@ -22,16 +33,5 @@
   对此属性的更改可以进行动画处理。
 
   默认边界原点是（0,0），大小与frame矩形的大小相同。
-
-  更改frame矩形会自动重新显示接收器，而不调用drawRect:方法。
-  如果想要在框架矩形更改时调用drawRect:方法，请将contentMode属性设置为UIViewContentModeRedraw。
-
-  对此属性的更改可以进行动画处理。 
-  但是，如果transform属性包含非identity变换，则frame属性的值是未定义的，不应该修改。 
-  在这种情况下，您可以使用center属性重新定位视图，然后使用bounds属性调整大小。
   ```
-  > __警告__
-  >
-  > 如果transform属性不是identity变换，那么此属性的值是未定义的，因此应该被忽略。
-
 

@@ -57,6 +57,9 @@ inlineBlock
 1. 保存代码：保存代码到模型中
 2. 传值
 3. block做参数
+4. block做返回值
+  - Masonry，链式编程思想，把所有语句使用.号连接起来，可读性好
+  - get方法返回值为block，block返回值为self
 
 ---
 

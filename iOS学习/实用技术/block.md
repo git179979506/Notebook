@@ -56,6 +56,7 @@ inlineBlock
 ###开发中的使用场景
 1. 保存代码：保存代码到模型中
 2. 传值
+3. block做参数
 
 ---
 
@@ -86,10 +87,20 @@ inlineBlock
 
 ---
 
-###循环引用
-引发原因：引用构成闭环
-引发的问题：闭环中的对象都不会销毁，造成内存泄漏
+###block造成的循环引用
+> 扩展
+- 引发原因：引用构成闭环
+- 引发的问题：闭环中的对象都不会销毁，造成内存泄漏
 
+1. 原因：block会对里面所有的强指针变量强引用
+2. 解决方法:使用__weak修饰
+  - 自己的弱指针：`__weak typeof(self) weakSelf = self`
+3. 解决block内延时操作时，期间block引用的对象被销毁的问题
+  - 解决方法：`__strong typeof(weakSelf) strongSelf = weakSelf`
+
+###block的变量传递
+1. 如果是局部变量，block是值传递
+2. 如果是静态变量、全局变量、__block修饰的变量，block是指针传递
 
 > 文档查询
 working开头的是讲原理

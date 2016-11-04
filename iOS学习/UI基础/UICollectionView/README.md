@@ -58,14 +58,16 @@ UICollectionViewController类提供了一个默认的手势识别器，您可以
 | Items | 原型单元格\(prototype cells\)的数量。此属性控制指定数量的原型单元格供您在故事板中配置。集合视图必须总是具有至少一个单元格，并且可以具有用于显示不同类型的内容或以不同方式显示相同内容的多个单元格。 |
 | Layout | 要使用的布局对象。使用此控件在UICollectionViewFlowLayout对象和您定义的自定义布局对象之间进行选择。 |
 
-选择流布局(flow layout)时，集合视图的大小检查器包含用于配置流布局度量的附加属性。使用这些属性配置单元格的大小，页眉和页脚的大小，单元格之间的最小间距以及单元格每个部分周围的任何边距。有关流布局度量的含义的更多信息，请参阅UICollectionViewFlowLayout。
+选择流布局\(flow layout\)时，集合视图的大小检查器包含用于配置流布局度量的附加属性。使用这些属性配置单元格的大小，页眉和页脚的大小，单元格之间的最小间距以及单元格每个部分周围的任何边距。有关流布局度量的含义的更多信息，请参阅UICollectionViewFlowLayout。
 
-####国际化(Internationalization)
+#### 国际化\(Internationalization\)
+
 集合视图没有其自己的国际化的直接内容。相反，您将集合视图的单元格和可重用视图国际化。有关国际化的详细信息，请参阅 Internationalization and Localization Guide。
 
+#### 辅助功能\(Accessibility\)
 
-####辅助功能(Accessibility)
 集合视图没有自己的内容可访问。如果您的单元格和可重用视图包含标准UIKit控件（如UILabel和UITextField），则可以使这些控件可访问。当集合视图更改其屏幕布局时，它将发布UIAccessibilityLayoutChangedNotification通知。
 
 有关使界面可访问的一般信息，请参阅 Accessibility Programming Guide for iOS。
+
 

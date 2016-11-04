@@ -9,9 +9,10 @@
 
 **Configuration.**在Interface Builder中的Attributes Inspector的“集合视图”部分中配置集合视图。有些配置不能通过Attributes Inspector进行，因此必须以编程方式进行。 如果您愿意，也可以以编程方式设置其他配置。
 
-![](/assets/Snip20161104_12.png)    
+   ![](/assets/Snip20161104_12.png)
 
-![](/assets/Snip20161104_13.png)
+   ![](/assets/Snip20161104_14.png)
+
 
 ####集合视图的内容
 
@@ -37,7 +38,7 @@
 
 在Collection Reusable View属性检查器（控制补充视图，装饰视图和单元格）中，您可以设置标识符（标识符）字段。输入您在代码中使用的ID，以标识可重用单元格，装饰或辅助视图对象。
 
-  ![](/assets/Snip20161104_14.png)
+   ![](/assets/Snip20161104_14.png)
 
 ####集合视图的行为
 
@@ -57,6 +58,78 @@
 当用户在单元格上执行`long-tap`手势时，集合视图尝试显示该单元格的编辑菜单。“编辑”菜单可用于剪切，复制和粘贴集合视图中的单元格。
 
 如果使用UICollectionViewFlowLayout类，则可以使用属性检查器将“Scroll Direction”字段设置为“水平”或“垂直”。 请注意，此属性不适用于自定义布局。
+
+   ![](/assets/Snip20161104_12.png)
+
+
+####集合视图的外观
+
+#####布局
+
+集合视图依赖于布局对象来定义其单元格，补充视图和装饰视图的布局。
+
+布局字段确定单元格的布局。 默认值为Flow，它指的是由UICollectionViewFlowLayout类定义的布局。 如果您提供自定义布局类，请选择自定义。
+
+   ![](/assets/Snip20161104_13.png)
+
+要了解有关创建自定义布局类的更多信息，请参阅Collection View Programming Guide for iOS。
+
+#####背景
+
+要为集合视图使用自定义背景，可以指定位于所有其他内容下方的视图，并自动调整大小以填充集合视图的整个边界。您可以使用backgroundView属性设置此值。因为此背景视图不会随着集合视图的内容滚动，所以它不是显示装饰性背景（如木制书架的外观）的适当方式。
+
+
+#####单元格背景
+
+要为单个集合视图单元格使用自定义背景，您可以指定位于单元格内容视图后面并填充单元格范围的视图。 您可以使用backgroundView属性设置此值。
+
+您还可以通过提供在用户选择单元格时显示在单元格背景视图上方并在内容视图后方显示的视图来指定自定义所选背景。 使用selectedBackgroundView属性设置此值。
+
+#####间距
+在Collection View Flow Layout尺寸检查器中，可以设置布局对象在布置单元格和补充视图时使用的大小值（以点为单位）。
+
+![](/assets/Snip20161104_15.png)
+
+对于单元格之间的间距，您可以设置以下最小间距值：
+- **For Cells:** 在一行上的单元格之间维持的最小空间。
+- **For Lines:** 在单元行之间保持的最小空间。
+
+#####单元格填充
+
+要在单元格周围添加填充，以便空间出现在部分单元格的上方，下方或两侧，请使用Collection View Flow Layout尺寸检查器中的“Section Insets”字段。指定非零插入值会减少可用于布局单元格的空间量，从而限制可以显示在一行上的单元格数量或可以显示在一个节中的行数。您可以指定的插入是：
+
+- **Top:** 在标题视图的底部和第一行单元格的顶部之间添加的空间。
+- **Bottom:** 在单元格的底部最后一行和页脚的顶部之间添加的空格
+- **Left:** 在单元格的左边缘和集合视图的左边缘之间添加的空间。
+- **Right:** 在单元格的右边缘和集合视图的右边缘之间添加的空间。
+
+####使用自动布局和集合视图
+
+您可以在集合视图和其他用户界面元素之间创建自动布局约束。除了基线约束之外，还可以为集合视图创建任何类型的约束。
+
+有关将自动布局与iOS视图一起使用的一般信息，请参阅Using Auto Layout with Views。
+
+####Making Collection Views Accessible
+
+默认情况下，集合视图中的数据项可以由标准UIKit对象（如UILabel和UITextField）表示时访问。
+
+当集合视图更改其屏幕布局时，它将发布UIAccessibilityLayoutChangedNotification通知。
+
+有关使iOS视图可访问的一般信息，请参阅Making Views Accessible。
+
+####国际化集合视图
+
+有关详细信息，请参阅Internationalization and Localization Guide。
+
+####与集合视图类似的元素
+
+以下元素提供与集合视图类似的功能：
+
+- **Table View:** 在单列列表中显示数据项的滚动视图。有关详细信息，请参阅Table Views。
+- **Scroll View:** 滚动视图，显示内容，但不支持任何特定布局或排序方案。有关详细信息，请参阅Scroll Views。
+
+
+
 
 
 

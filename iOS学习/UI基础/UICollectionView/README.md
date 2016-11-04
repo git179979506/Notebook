@@ -77,7 +77,7 @@ UICollectionViewController类提供了一个默认的手势识别器，您可以
 - \- initWithFrame:collectionViewLayout:
 
 ####配置集合视图
-- [delegate](./UICollectionViewDelegate.md)
+- [delegate](./uicollectionviewdelegate.md)
 - dataSource
 - backgroundView
 

@@ -16,17 +16,20 @@ UICollectionView类管理数据项的有序集合，并使用可自定义的布�
 
 除了将其嵌入到用户界面中之外，还可以使用UICollectionView对象的方法来确保项目的可视化呈现符合数据源对象中的顺序。因此，无论何时在集合中添加，删除或重新排列数据，都可以使用此类的方法插入，删除和重新排列相应的单元格。您还可以使用集合视图对象来管理所选项目，但对于此行为，集合视图使用其关联的委托对象。
 
-####集合视图和布局对象
+#### 集合视图和布局对象
+
 与集合视图相关联的一个非常重要的对象是layout对象，它是UICollectionViewLayout类的子类。布局对象负责定义集合视图内的所有单元格和补充视图的组织和位置。虽然它定义了它们的位置，但布局对象实际上并不将该信息应用于相应的视图。因为单元格和补充视图的创建涉及集合视图和数据源对象之间的协调，所以集合视图实际上将布局信息应用于视图。因此，在某种意义上，布局对象像另一个数据源，只提供可视信息而不是项目数据。
 
 通常在创建集合视图时指定布局对象，但也可以动态更改集合视图的布局。 布局对象存储在collectionViewLayout属性中。 设置此属性将直接更新布局，而不会对更改进行动画处理。如果要对更改进行动画处理，则必须调用setCollectionViewLayout:animated:completion:方法。
 
 如果要创建一个交互式转换（由手势识别器或触摸事件驱动）使用startInteractiveTransitionToCollectionViewLayout:completion:方法来更改布局对象。该方法安装一个中间布局对象，其目的是使用您的手势识别器或事件处理代码来跟踪转换进度。当事件处理代码确定转换完成时，它调用finishInteractiveTransition或cancelInteractiveTransition方法来删除中间布局对象并安装预期的目标布局对象。
 
-####创建单元格和补充视图
+#### 创建单元格和补充视图
+
 集合视图的数据源对象提供项目的内容和用于呈现该内容的视图。当集合视图首次加载其内容时，它要求其数据源为每个可见项提供视图。为了简化代码的创建过程，集合视图要求您始终将视图取出队列，而不是在代码中显式创建它们。有两种方法用于出队视图。 您使用的视图取决于请求的视图类型：
-- 使用dequeueReusableCellWithReuseIdentifier:forIndexPath:获取集合视图中项目的单元格。
-- 使用dequeueReusableSupplementaryViewOfKind:withReuseIdentifier:forIndexPath:方法获取布局对象请求的补充视图。
+
+* 使用dequeueReusableCellWithReuseIdentifier:forIndexPath:获取集合视图中项目的单元格。
+* 使用dequeueReusableSupplementaryViewOfKind:withReuseIdentifier:forIndexPath:方法获取布局对象请求的补充视图。
 
 在调用这些方法之一之前，必须告诉集合视图如何创建相应的视图（如果尚不存在）。为此，您必须使用集合视图注册类或nib文件。例如，当注册单元格时，您使用registerClass:forCellWithReuseIdentifier:或registerNib:forCellWithReuseIdentifier:方法。作为注册过程的一部分，您可以指定用于标识目的视图的重用标识符。这是以后视图出列时使用的同一个字符串。
 
@@ -36,7 +39,8 @@ UICollectionView类管理数据项的有序集合，并使用可自定义的布�
 
 有关外观和行为配置的详细信息，请参阅 Collection Views。
 
-####交互式重新排序项目
+#### 交互式重新排序项目
+
 集合视图允许您根据用户交互移动项目。通常，集合视图中项目的顺序由数据源定义。如果您支持用户重新排列项目的能力，您可以配置手势识别器来跟踪用户与集合视图项目的交互，并更新该项目的位置。
 
 要开始交互式重新定位项目，请调用集合视图的beginInteractiveMovementForItemAtIndexPath:方法。当您的手势识别器正在跟踪触摸事件时，调用updateInteractiveMovementTargetPosition:方法来报告触摸位置的更改。完成跟踪手势后，调用endInteractiveMovement或cancelInteractiveMovement方法来结束交互并更新集合视图。
@@ -45,18 +49,23 @@ UICollectionView类管理数据项的有序集合，并使用可自定义的布�
 
 UICollectionViewController类提供了一个默认的手势识别器，您可以使用它重新排列其托管集合视图中的项目。要安装此手势识别器，请将集合视图控制器的installsStandardGestureForInteractiveMovement属性设置为YES。
 
-####Interface Builder属性
+#### Interface Builder属性
+
 **表1** 列出了在Interface Builder中为集合视图配置的属性。
 
-| 属性 | 描述 |
-|:-------------:|:-------------|
-| Items | 原型单元格(prototype cells)的数量。此属性控制指定数量的原型单元格供您在故事板中配置。集合视图必须总是具有至少一个单元格，并且可以具有用于显示不同类型的内容或以不同方式显示相同内容的多个单元格。|
-| Layout | 要使用的布局对象。使用此控件在UICollectionViewFlowLayout对象和您定义的自定义布局对象之间进行选择。|
+| **属性** | **描述** |
+| --- | --- |
+| Items | 原型单元格\(prototype cells\)的数量。此属性控制指定数量的原型单元格供您在故事板中配置。集合视图必须总是具有至少一个单元格，并且可以具有用于显示不同类型的内容或以不同方式显示相同内容的多个单元格。 |
+| Layout | 要使用的布局对象。使用此控件在UICollectionViewFlowLayout对象和您定义的自定义布局对象之间进行选择。 |
+
+选择流布局(flow layout)时，集合视图的大小检查器包含用于配置流布局度量的附加属性。使用这些属性配置单元格的大小，页眉和页脚的大小，单元格之间的最小间距以及单元格每个部分周围的任何边距。有关流布局度量的含义的更多信息，请参阅UICollectionViewFlowLayout。
+
+####国际化(Internationalization)
+集合视图没有其自己的国际化的直接内容。相反，您将集合视图的单元格和可重用视图国际化。有关国际化的详细信息，请参阅 Internationalization and Localization Guide。
 
 
+####辅助功能(Accessibility)
+集合视图没有自己的内容可访问。如果您的单元格和可重用视图包含标准UIKit控件（如UILabel和UITextField），则可以使这些控件可访问。当集合视图更改其屏幕布局时，它将发布UIAccessibilityLayoutChangedNotification通知。
 
-
-
-
-
+有关使界面可访问的一般信息，请参阅 Accessibility Programming Guide for iOS。
 

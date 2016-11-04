@@ -7,6 +7,8 @@
         * [UIScrollView](iOS学习/UI基础/uiscrollview.md)
         * [UICollectionView](iOS学习/UI基础/UICollectionView/README.md)
             * [UICollectionViewDelegate](iOS学习/UI基础/UICollectionView/uicollectionviewdelegate.md)
+            * [UICollectionViewController](iOS学习/UI基础/UICollectionView/uicollectionviewcontroller.md)
+            * UICollectionViewDataSource
     * [开发随笔](iOS学习/开发随笔/README.md)
         * [新特性相关](iOS学习/开发随笔/新特性相关.md)
         * [几个方法](iOS学习/开发随笔/几个方法.md)

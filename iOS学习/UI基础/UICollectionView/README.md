@@ -33,9 +33,9 @@ UICollectionView类管理数据项的有序集合，并使用可自定义的布�
 
 在调用这些方法之一之前，必须告诉集合视图如何创建相应的视图（如果尚不存在）。为此，您必须使用集合视图注册类或nib文件。例如，当注册单元格时，您使用registerClass:forCellWithReuseIdentifier:或registerNib:forCellWithReuseIdentifier:方法。作为注册过程的一部分，您可以指定用于标识目的视图的重用标识符。这是以后视图出列时使用的同一个字符串。
 
-在对delegate方法中的相应视图出队之后，配置其内容并将其返回到集合视图以供使用。从布局对象获取布局信息后，集合视图将其应用于视图并显示它。
+在对[delegate](/uicollectionviewdelegate.md)方法中的相应视图出队之后，配置其内容并将其返回到集合视图以供使用。从布局对象获取布局信息后，集合视图将其应用于视图并显示它。
 
-有关实现数据源方法以创建和配置视图的更多信息，请参阅UICollectionViewDataSource。
+有关实现数据源方法以创建和配置视图的更多信息，请参阅[UICollectionViewDataSource](./uicollectionviewdatasource.md)。
 
 有关外观和行为配置的详细信息，请参阅 Collection Views。
 
@@ -47,7 +47,7 @@ UICollectionView类管理数据项的有序集合，并使用可自定义的布�
 
 在用户交互期间，收集视图会动态地使其布局无效，以反映项目的当前位置。如果不执行任何操作，默认布局行为会为您重新定位项目，但如果需要，您可以自定义布局动画。当交互完成时，使用项目的新位置更新其数据源对象。
 
-UICollectionViewController类提供了一个默认的手势识别器，您可以使用它重新排列其托管集合视图中的项目。要安装此手势识别器，请将集合视图控制器的installsStandardGestureForInteractiveMovement属性设置为YES。
+[UICollectionViewController](./uicollectionviewcontroller.md)类提供了一个默认的手势识别器，您可以使用它重新排列其托管集合视图中的项目。要安装此手势识别器，请将集合视图控制器的installsStandardGestureForInteractiveMovement属性设置为YES。
 
 #### Interface Builder属性
 

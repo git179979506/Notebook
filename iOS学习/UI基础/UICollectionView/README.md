@@ -71,3 +71,100 @@ UICollectionViewController类提供了一个默认的手势识别器，您可以
 有关使界面可访问的一般信息，请参阅 Accessibility Programming Guide for iOS。
 
 
+###API
+####初始化集合视图
+- \- initWithFrame:collectionViewLayout:
+
+####配置集合视图
+- delegate
+- dataSource
+- backgroundView
+
+####创建集合视图单元格
+
+- \- registerClass:forCellWithReuseIdentifier:  注册类以用于创建新的集合视图单元格。
+- \- registerNib:forCellWithReuseIdentifier:  注册用于创建新集合视图单元格的nib文件。
+- \- registerClass:forSupplementaryViewOfKind:withReuseIdentifier:  注册类以用于为集合视图创建补充视图。
+- \- registerNib:forSupplementaryViewOfKind:withReuseIdentifier:  注册一个nib文件，用于为集合视图创建补充视图。
+- \- dequeueReusableCellWithReuseIdentifier:forIndexPath:  返回由其标识符定位的可重用单元格对象
+- \- dequeueReusableSupplementaryViewOfKind:withReuseIdentifier:forIndexPath:  返回由其标识符和类型定位的可重用补充视图。
+
+####更改布局
+
+- collectionViewLayout 用于组织收集的视图项目的布局。
+- \- setCollectionViewLayout:animated: 更改集合视图的布局，并选择性地对更改进行动画处理。
+- \- setCollectionViewLayout:animated:completion: 更改集合视图的布局，并在动画完成时通知您。
+- \- startInteractiveTransitionToCollectionViewLayout:completion: 使用交互式转场效果更改集合视图的当前布局。
+- \- finishInteractiveTransition 通过安装预期的目标布局，指示集合视图完成交互式转换。
+- \- cancelInteractiveTransition 指示集合视图中止交互式转换并返回到其原始布局对象。
+
+####重新载入内容
+
+- \- reloadData 重新加载集合视图的所有数据。
+- \- reloadSections: 在集合视图的指定部分重新加载数据。
+- \- reloadItemsAtIndexPaths: 仅重新装入指定索引路径中的项目。
+
+####获取集合视图的状态
+
+- numberOfSections 返回集合视图显示的节数。
+- \- numberOfItemsInSection: 返回指定节中的项目数。
+- visibleCells 返回集合视图当前显示的可见单元格数组。
+
+####插入、移动和删除项目
+
+- \- insertItemsAtIndexPaths: 在指定的索引路径插入新项目。
+- \- moveItemAtIndexPath:toIndexPath: 在集合视图中将项目从一个位置移动到另一个位置。
+- \- deleteItemsAtIndexPaths: 删除指定索引路径中的项目。
+
+####插入、移动和删除节
+
+- \- insertSections: 在指定的索引处插入新节。
+- \- moveSection:toSection: 将集合视图中的一个部分从一个位置移动到另一个位置。
+- \- deleteSections: 删除指定索引处的节。
+
+#####交互式重新排序项目（9.0）
+
+- \- beginInteractiveMovementForItemAtIndexPath: 在指定的索引路径启动项目的交互式移动。
+- \- updateInteractiveMovementTargetPosition: 更新集合视图边界内项目的位置。
+- \- endInteractiveMovement 结束交互式移动跟踪，并将目标项目移动到其新位置。
+- \- cancelInteractiveMovement 结束交互式移动跟踪，并将目标项目返回到其原始位置。
+
+管理选择
+
+- allowsSelection 一个布尔值，指示用户是否可以在集合视图中选择项目。
+- allowsMultipleSelection 布尔值，用于确定用户是否可以在集合视图中选择多个项目。
+- indexPathsForSelectedItems 所选项目的索引路径。(10.0)
+- \- selectItemAtIndexPath:animated:scrollPosition: 在指定的索引路径中选择项目，并可选择将其滚动到视图。
+- \- deselectItemAtIndexPath:animated: 取消选择指定索引处的项目。
+
+####Managing Focus (10.0)
+
+- remembersLastFocusedIndexPath 一个布尔值，指示集合视图是否自动将焦点分配给最后焦点索引路径上的项目。
+
+####在集合视图中定位项目和视图
+
+- \- indexPathForItemAtPoint: 返回集合视图中指定点处项目的索引路径。
+- indexPathsForVisibleItems 集合视图中可见项目的数组。
+- \- indexPathForCell: 返回指定单元格的索引路径。
+- \- cellForItemAtIndexPath: 返回指定索引路径处的可见单元格对象。
+- \- indexPathsForVisibleSupplementaryElementsOfKind: 返回指定类型的所有可见辅助视图的索引路径。(9.0)
+- \- supplementaryViewForElementKind:atIndexPath: 返回指定索引路径的补充视图。(9.0)
+- \- visibilitySupplementaryViewsOfKind: 返回指定类型的可见辅助视图的数组。(9.0)
+
+####获取布局信息
+
+- \- layoutAttributesForItemAtIndexPath: 返回指定索引路径下项目的布局信息。
+- \- layoutAttributesForSupplementaryElementOfKind:atIndexPath: 返回指定补充视图的布局信息。
+
+####将项滚动到视图
+- \- scrollToItemAtIndexPath:atScrollPosition:animated: 滚动收集视图内容，直到指定的项目可见。
+
+####动画对集合视图的多个更改
+- \- performBatchUpdates:completion: 以组形式动画多次插入，删除，重新加载和移动操作。
+
+####常量
+
+- UICollectionViewScrollPosition 指示如何将项滚动到集合视图的可见部分的常量。
+- UICollectionViewLayoutInteractiveTransitionCompletion 在集合视图的交互式转换结束时调用的完成block。
+
+

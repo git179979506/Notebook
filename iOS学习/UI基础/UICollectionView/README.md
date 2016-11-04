@@ -70,6 +70,7 @@ UICollectionViewController类提供了一个默认的手势识别器，您可以
 
 有关使界面可访问的一般信息，请参阅 Accessibility Programming Guide for iOS。
 
+---
 
 ###API
 ####初始化集合视图
@@ -122,14 +123,14 @@ UICollectionViewController类提供了一个默认的手势识别器，您可以
 - \- moveSection:toSection: 将集合视图中的一个部分从一个位置移动到另一个位置。
 - \- deleteSections: 删除指定索引处的节。
 
-#####交互式重新排序项目（9.0）
+####交互式重新排序项目（9.0）
 
 - \- beginInteractiveMovementForItemAtIndexPath: 在指定的索引路径启动项目的交互式移动。
 - \- updateInteractiveMovementTargetPosition: 更新集合视图边界内项目的位置。
 - \- endInteractiveMovement 结束交互式移动跟踪，并将目标项目移动到其新位置。
 - \- cancelInteractiveMovement 结束交互式移动跟踪，并将目标项目返回到其原始位置。
 
-管理选择
+####管理选择
 
 - allowsSelection 一个布尔值，指示用户是否可以在集合视图中选择项目。
 - allowsMultipleSelection 布尔值，用于确定用户是否可以在集合视图中选择多个项目。

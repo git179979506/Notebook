@@ -1,171 +1,62 @@
-> 1. collection view: 集合视图
-> 2. item: 项目
-> 3. cell: 单元格
-> 4. supplementary view: 补充视图
+###Collection Views
 
-UICollectionView类管理数据项的有序集合，并使用可自定义的布局来呈现它们。集合视图\(collection view\)提供与表视图相同的一般功能，除了集合视图能够支持的不仅仅是单列布局。集合视图支持可定制的布局，可用于实现多列网格，平铺布局，圆形布局等。 你甚至可以动态地更改集合视图的布局。
+集合视图使用标准或自定义布局显示数据项的有序集合。与表视图类似，集合视图从您的自定义数据源对象获取数据，并使用单元格，布局和补充视图的组合显示它。集合视图可以在网格中或您设计的自定义布局中显示项目。无论您选择的布局样式如何，集合视图最适合显示非分层的有序数据项。
 
-### 概述
+**Purpose.**集合视图允许用户：
+- 查看可变大小项目的目录，可选择分为多个章节
+- 添加到、重新排列和编辑项目集合
+- 从频繁更改的项目显示中选择
 
-**图1** 使用流布局的集合视图
+**Configuration.**在Interface Builder中的Attributes Inspector的“集合视图”部分中配置集合视图。有些配置不能通过Attributes Inspector进行，因此必须以编程方式进行。 如果您愿意，也可以以编程方式设置其他配置。
+
+![](/assets/Snip20161104_12.png)    
+
+![](/assets/Snip20161104_13.png)
+
+####集合视图的内容
+
+单元格是您的集合视图的主要内容。单元格的工作是为您的数据源对象显示单个项目的内容。每个单元格必须是UICollectionViewCell类的实例，您可以根据需要呈现您的内容。单元对象为管理自己的选择和高亮状态提供了固有的支持，虽然一些自定义代码必须被写入以实际应用高亮到单元格。UICollectionViewCell对象是您用于主要数据项的特定类型的可重用视图。
+
+为了管理数据的可视化呈现，集合视图使用许多相关类，例如UICollectionViewController，UICollectionViewDataSource，UICollectionViewDelegate，UICollectionReusableView，UICollectionViewCell，UICollectionViewLayout和UICollectionViewLayoutAttributes。
+
+集合视图强制在呈现的数据和用于呈现的视觉元素之间的严格分离。 您的应用程序是通过自定义数据源对象管理数据负责。 （要了解如何创建这些对象，请参阅Designing Your Data Objects。）您的应用程序还提供用于呈现数据的视图对象。 集合视图接受您的视图，并且在布局对象的帮助下，指定放置和其他视觉属性 — 完成在屏幕上显示它们的所有工作。
+
 ![](/assets/Snip20161103_9.png)
+要以有效的方式在屏幕上显示内容，集合视图使用以下可重用的视图对象：
 
-向用户界面添加集合视图时，应用程序的主要任务是管理与该集合视图相关联的数据。集合视图从数据源对象获取其数据，数据源对象是符合UICollectionViewDataSource协议并由应用程序提供的对象。收集视图中的数据被组织成单独的项目\(item\)，然后可以将它们分组成多个部分以用于呈现。项目是要显示的最小数据单位。例如，在照片应用程序中，项目可能是单个图像。集合视图使用单元格\(cell\)在屏幕上显示项目，该单元格是数据源配置和提供的UICollectionViewCell类的实例。
+- **cell:** 表示一个数据项。
+- **Supplementary view:** 表示与数据项相关的信息，例如节标题或页脚。
+- **Decoration view:** 表示不属于您数据的纯装饰内容，例如背景图片。
 
-除了它的单元格，集合视图也可以使用其他类型的视图来呈现数据。这些补充视图\(supplementary view\)可以是与单独单元分离但仍传达某种信息的段标题和页脚。对补充视图的支持是可选的，并由收集视图的布局对象定义，它也负责定义这些视图的位置。
+![](/assets/Snip20161104_11.png)
 
-除了将其嵌入到用户界面中之外，还可以使用UICollectionView对象的方法来确保项目的可视化呈现符合数据源对象中的顺序。因此，无论何时在集合中添加，删除或重新排列数据，都可以使用此类的方法插入，删除和重新排列相应的单元格。您还可以使用集合视图对象来管理所选项目，但对于此行为，集合视图使用其关联的委托对象。
+因为集合视图使用这些和其他对象来确定数据的可视化表示，所以在Interface Builder中配置集合视图意味着您需要单独配置一些对象。
 
-#### 集合视图和布局对象
+- **Items:** 您为其定义不同单元格对象的不同类型数据的数量。 如果您的应用只使用一种类型的数据项（无论您显示的数据项的总数），请将此值设置为1。
+- **Accessories:** 每个部分的页眉或页脚视图的存在（此属性不适用于自定义布局）。根据需要选择节标题或节标题。
 
-与集合视图相关联的一个非常重要的对象是layout对象，它是UICollectionViewLayout类的子类。布局对象负责定义集合视图内的所有单元格和补充视图的组织和位置。虽然它定义了它们的位置，但布局对象实际上并不将该信息应用于相应的视图。因为单元格和补充视图的创建涉及集合视图和数据源对象之间的协调，所以集合视图实际上将布局信息应用于视图。因此，在某种意义上，布局对象像另一个数据源，只提供可视信息而不是项目数据。
+在Collection Reusable View属性检查器（控制补充视图，装饰视图和单元格）中，您可以设置标识符（标识符）字段。输入您在代码中使用的ID，以标识可重用单元格，装饰或辅助视图对象。
 
-通常在创建集合视图时指定布局对象，但也可以动态更改集合视图的布局。 布局对象存储在collectionViewLayout属性中。 设置此属性将直接更新布局，而不会对更改进行动画处理。如果要对更改进行动画处理，则必须调用setCollectionViewLayout:animated:completion:方法。
+  ![](/assets/Snip20161104_14.png)
 
-如果要创建一个交互式转换（由手势识别器或触摸事件驱动）使用startInteractiveTransitionToCollectionViewLayout:completion:方法来更改布局对象。该方法安装一个中间布局对象，其目的是使用您的手势识别器或事件处理代码来跟踪转换进度。当事件处理代码确定转换完成时，它调用finishInteractiveTransition或cancelInteractiveTransition方法来删除中间布局对象并安装预期的目标布局对象。
+####集合视图的行为
 
-#### 创建单元格和补充视图
+您可以在集合视图中支持几种行为。 例如，您可能希望允许用户：
+- 选择一个或多个项目
+- 插入，删除和重新排列项目或部分
+- 编辑项目
 
-集合视图的数据源对象提供项目的内容和用于呈现该内容的视图。当集合视图首次加载其内容时，它要求其数据源为每个可见项提供视图。为了简化代码的创建过程，集合视图要求您始终将视图取出队列，而不是在代码中显式创建它们。有两种方法用于出队视图。 您使用的视图取决于请求的视图类型：
+默认情况下，当集合视图检测到用户点击特定单元格时，它会根据需要更新单元格的`selected`或`highlighted`的属性。 您可以编写配置集合视图的代码以支持多项目选择，或者自己绘制`selected`或`highlighted`的状态。要了解如何支持多个选择或自定义选择状态，请参阅Managing the Visual State for Selections and Highlights。
 
-* 使用dequeueReusableCellWithReuseIdentifier:forIndexPath:获取集合视图中项目的单元格。
-* 使用dequeueReusableSupplementaryViewOfKind:withReuseIdentifier:forIndexPath:方法获取布局对象请求的补充视图。
+要支持在集合视图中插入，删除或重新排序单元格，请更改数据源，然后指示集合视图重新显示内容。默认情况下，集合视图动画化单个项目的插入，删除或移动; 如果要同时对多个项目的这些更改进行动画处理，请使用代码块批量更新。要了解如何对集合视图的多个更改进行动画处理，请参阅Inserting, Deleting, and Moving Sections and Items。要让用户通过拖动移动项目或项目，您还需要结合自定义手势识别器。（要了解如何执行此操作，请参阅Manipulating Cells and Views。）
 
-在调用这些方法之一之前，必须告诉集合视图如何创建相应的视图（如果尚不存在）。为此，您必须使用集合视图注册类或nib文件。例如，当注册单元格时，您使用registerClass:forCellWithReuseIdentifier:或registerNib:forCellWithReuseIdentifier:方法。作为注册过程的一部分，您可以指定用于标识目的视图的重用标识符。这是以后视图出列时使用的同一个字符串。
+在故事板中配置单元格和补充视图时，可以通过将项目拖动到集合视图并在其中进行配置来实现。这将在集合视图和相应的单元格或视图之间创建关系。对于单元格，从对象库中拖动集合视图单元格并将其放置到集合视图中。将自定义类和您的单元格的集合可重用视图标识符设置为适当的值。
 
-在对[delegate](./uicollectionviewdelegate.md)方法中的相应视图出队之后，配置其内容并将其返回到集合视图以供使用。从布局对象获取布局信息后，集合视图将其应用于视图并显示它。
+无论用户选择还是取消选择单元格，单元格的选中状态(selected state)总是最后要更改的。点击单元格总是首先改变单元的高亮状态(highlighted state)。 只有在点击序列结束并且在该序列期间应用的任何突出部分被移除之后，单元的选定状态才改变。在设计单元格时，应确保突出高亮和选定状态的视觉外观不会以无意的方式发生冲突。
 
-有关实现数据源方法以创建和配置视图的更多信息，请参阅[UICollectionViewDataSource](./uicollectionviewdatasource.md)。
+当用户在单元格上执行`long-tap`手势时，集合视图尝试显示该单元格的编辑菜单。“编辑”菜单可用于剪切，复制和粘贴集合视图中的单元格。
 
-有关外观和行为配置的详细信息，请参阅 Collection Views。
+如果使用UICollectionViewFlowLayout类，则可以使用属性检查器将“Scroll Direction”字段设置为“水平”或“垂直”。 请注意，此属性不适用于自定义布局。
 
-#### 交互式重新排序项目
-
-集合视图允许您根据用户交互移动项目。通常，集合视图中项目的顺序由数据源定义。如果您支持用户重新排列项目的能力，您可以配置手势识别器来跟踪用户与集合视图项目的交互，并更新该项目的位置。
-
-要开始交互式重新定位项目，请调用集合视图的beginInteractiveMovementForItemAtIndexPath:方法。当您的手势识别器正在跟踪触摸事件时，调用updateInteractiveMovementTargetPosition:方法来报告触摸位置的更改。完成跟踪手势后，调用endInteractiveMovement或cancelInteractiveMovement方法来结束交互并更新集合视图。
-
-在用户交互期间，收集视图会动态地使其布局无效，以反映项目的当前位置。如果不执行任何操作，默认布局行为会为您重新定位项目，但如果需要，您可以自定义布局动画。当交互完成时，使用项目的新位置更新其数据源对象。
-
-[UICollectionViewController](./uicollectionviewcontroller.md)类提供了一个默认的手势识别器，您可以使用它重新排列其托管集合视图中的项目。要安装此手势识别器，请将集合视图控制器的installsStandardGestureForInteractiveMovement属性设置为YES。
-
-#### Interface Builder属性
-
-**表1** 列出了在Interface Builder中为集合视图配置的属性。
-
-| **属性** | **描述** |
-| --- | --- |
-| Items | 原型单元格\(prototype cells\)的数量。此属性控制指定数量的原型单元格供您在故事板中配置。集合视图必须总是具有至少一个单元格，并且可以具有用于显示不同类型的内容或以不同方式显示相同内容的多个单元格。 |
-| Layout | 要使用的布局对象。使用此控件在UICollectionViewFlowLayout对象和您定义的自定义布局对象之间进行选择。 |
-
-选择流布局\(flow layout\)时，集合视图的大小检查器包含用于配置流布局度量的附加属性。使用这些属性配置单元格的大小，页眉和页脚的大小，单元格之间的最小间距以及单元格每个部分周围的任何边距。有关流布局度量的含义的更多信息，请参阅UICollectionViewFlowLayout。
-
-#### 国际化\(Internationalization\)
-
-集合视图没有其自己的国际化的直接内容。相反，您将集合视图的单元格和可重用视图国际化。有关国际化的详细信息，请参阅 Internationalization and Localization Guide。
-
-#### 辅助功能\(Accessibility\)
-
-集合视图没有自己的内容可访问。如果您的单元格和可重用视图包含标准UIKit控件（如UILabel和UITextField），则可以使这些控件可访问。当集合视图更改其屏幕布局时，它将发布UIAccessibilityLayoutChangedNotification通知。
-
-有关使界面可访问的一般信息，请参阅 Accessibility Programming Guide for iOS。
-
----
-
-###API
-####初始化集合视图
-- \- initWithFrame:collectionViewLayout:
-
-####配置集合视图
-- [delegate](./uicollectionviewdelegate.md)
-- dataSource
-- backgroundView
-
-####创建集合视图单元格
-
-- \- registerClass:forCellWithReuseIdentifier:  注册类以用于创建新的集合视图单元格。
-- \- registerNib:forCellWithReuseIdentifier:  注册用于创建新集合视图单元格的nib文件。
-- \- registerClass:forSupplementaryViewOfKind:withReuseIdentifier:  注册类以用于为集合视图创建补充视图。
-- \- registerNib:forSupplementaryViewOfKind:withReuseIdentifier:  注册一个nib文件，用于为集合视图创建补充视图。
-- \- dequeueReusableCellWithReuseIdentifier:forIndexPath:  返回由其标识符定位的可重用单元格对象
-- \- dequeueReusableSupplementaryViewOfKind:withReuseIdentifier:forIndexPath:  返回由其标识符和类型定位的可重用补充视图。
-
-####更改布局
-
-- collectionViewLayout 用于组织收集的视图项目的布局。
-- \- setCollectionViewLayout:animated: 更改集合视图的布局，并选择性地对更改进行动画处理。
-- \- setCollectionViewLayout:animated:completion: 更改集合视图的布局，并在动画完成时通知您。
-- \- startInteractiveTransitionToCollectionViewLayout:completion: 使用交互式转场效果更改集合视图的当前布局。
-- \- finishInteractiveTransition 通过安装预期的目标布局，指示集合视图完成交互式转换。
-- \- cancelInteractiveTransition 指示集合视图中止交互式转换并返回到其原始布局对象。
-
-####重新载入内容
-
-- \- reloadData 重新加载集合视图的所有数据。
-- \- reloadSections: 在集合视图的指定部分重新加载数据。
-- \- reloadItemsAtIndexPaths: 仅重新装入指定索引路径中的项目。
-
-####获取集合视图的状态
-
-- numberOfSections 返回集合视图显示的节数。
-- \- numberOfItemsInSection: 返回指定节中的项目数。
-- visibleCells 返回集合视图当前显示的可见单元格数组。
-
-####插入、移动和删除项目
-
-- \- insertItemsAtIndexPaths: 在指定的索引路径插入新项目。
-- \- moveItemAtIndexPath:toIndexPath: 在集合视图中将项目从一个位置移动到另一个位置。
-- \- deleteItemsAtIndexPaths: 删除指定索引路径中的项目。
-
-####插入、移动和删除节
-
-- \- insertSections: 在指定的索引处插入新节。
-- \- moveSection:toSection: 将集合视图中的一个部分从一个位置移动到另一个位置。
-- \- deleteSections: 删除指定索引处的节。
-
-####交互式重新排序项目（9.0）
-
-- \- beginInteractiveMovementForItemAtIndexPath: 在指定的索引路径启动项目的交互式移动。
-- \- updateInteractiveMovementTargetPosition: 更新集合视图边界内项目的位置。
-- \- endInteractiveMovement 结束交互式移动跟踪，并将目标项目移动到其新位置。
-- \- cancelInteractiveMovement 结束交互式移动跟踪，并将目标项目返回到其原始位置。
-
-####管理选择
-
-- allowsSelection 一个布尔值，指示用户是否可以在集合视图中选择项目。
-- allowsMultipleSelection 布尔值，用于确定用户是否可以在集合视图中选择多个项目。
-- indexPathsForSelectedItems 所选项目的索引路径。(10.0)
-- \- selectItemAtIndexPath:animated:scrollPosition: 在指定的索引路径中选择项目，并可选择将其滚动到视图。
-- \- deselectItemAtIndexPath:animated: 取消选择指定索引处的项目。
-
-####Managing Focus (10.0)
-
-- remembersLastFocusedIndexPath 一个布尔值，指示集合视图是否自动将焦点分配给最后焦点索引路径上的项目。
-
-####在集合视图中定位项目和视图
-
-- \- indexPathForItemAtPoint: 返回集合视图中指定点处项目的索引路径。
-- indexPathsForVisibleItems 集合视图中可见项目的数组。
-- \- indexPathForCell: 返回指定单元格的索引路径。
-- \- cellForItemAtIndexPath: 返回指定索引路径处的可见单元格对象。
-- \- indexPathsForVisibleSupplementaryElementsOfKind: 返回指定类型的所有可见辅助视图的索引路径。(9.0)
-- \- supplementaryViewForElementKind:atIndexPath: 返回指定索引路径的补充视图。(9.0)
-- \- visibilitySupplementaryViewsOfKind: 返回指定类型的可见辅助视图的数组。(9.0)
-
-####获取布局信息
-
-- \- layoutAttributesForItemAtIndexPath: 返回指定索引路径下项目的布局信息。
-- \- layoutAttributesForSupplementaryElementOfKind:atIndexPath: 返回指定补充视图的布局信息。
-
-####将项滚动到视图
-- \- scrollToItemAtIndexPath:atScrollPosition:animated: 滚动收集视图内容，直到指定的项目可见。
-
-####动画对集合视图的多个更改
-- \- performBatchUpdates:completion: 以组形式动画多次插入，删除，重新加载和移动操作。
-
-####常量
-
-- UICollectionViewScrollPosition 指示如何将项滚动到集合视图的可见部分的常量。
-- UICollectionViewLayoutInteractiveTransitionCompletion 在集合视图的交互式转换结束时调用的完成block。
 
 

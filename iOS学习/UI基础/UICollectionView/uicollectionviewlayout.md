@@ -1,0 +1,55 @@
+UICollectionViewLayout类是一个抽象基类，您可以使用它来生成集合视图的布局信息。布局对象的工作是确定单元格，补充视图和装饰视图在集合视图边界内的位置，并在被询问时将该信息报告给集合视图。然后，集合视图将所提供的布局信息应用于相应的视图，使得它们可以在屏幕上呈现。
+
+###概述
+
+您必须子类化UICollectionViewLayout才能使用它。在你考虑子类化之前，你应该看看UICollectionViewFlowLayout类，看看它是否可以适应你的布局需求。
+
+####子类化注释
+
+布局对象的主要工作是提供关于集合视图中项目的位置和视觉状态的信息。布局对象不会创建为其提供布局的视图。这些视图由集合视图的数据源创建。相反，布局对象基于布局的设计来定义可视元素的位置和大小。
+
+集合视图有三种类型的可视元素需要布局：
+
+- **单元格是** 布局定位的主要元素。每个单元格表示集合中的单个数据项。集合视图可以具有单个单元格组，或者可以将这些单元格划分为多个部分。布局对象的主要工作是将单元格布置在集合视图的内容区域中。
+
+- **补充视图** 呈现数据，但不同于单元格。与单元格不同，用户不能选择补充视图。相反，您可以使用补充视图来实现给定部分或整个集合视图的页眉和页脚视图。补充视图是可选的，它们的使用和布局由布局对象定义。
+
+- **装饰视图** 是不能选择的视觉装饰，并且不是固有地与集合视图的数据相关联。装饰视图是另一种类型的补充视图。与补充视图一样，它们是可选的，它们的使用和布局由布局对象定义。
+
+集合视图要求其布局对象在许多不同的时间为这些元素提供布局信息。屏幕上显示的每个单元格和视图都使用布局对象中的信息进行定位。类似地，每次将项目插入到集合视图中或从集合视图中删除项目时，将对正在添加或删除的项目进行附加布局。但是，集合视图始终将布局限制为在屏幕上可见的对象。
+
+#####覆盖方法
+
+每个布局对象应该实现以下方法：
+- collectionViewContentSize
+- layoutAttributesForElementsInRect:
+- layoutAttributesForItemAtIndexPath:
+- layoutAttributesForSupplementaryViewOfKind:atIndexPath:（如果你的布局支持补充视图）
+- layoutAttributesForDecorationViewOfKind:atIndexPath:（如果你的布局支持装饰视图）
+- shouldInvalidateLayoutForBoundsChange:
+
+这些方法提供了收集视图需要将内容放置在屏幕上的基本布局信息。当然，如果你的布局不支持补充或装饰视图，不要实现相应的方法。
+
+当收集视图中的数据更改并且要插入或删除项目时，收集视图会要求其布局对象更新布局信息。具体来说，任何被移动，添加或删除的项目必须更新其布局信息以反映其新位置。对于移动的项目，集合视图使用标准方法检索项目的更新布局属性。对于要插入或删除的项目，集合视图调用一些不同的方法，您应该覆盖它们以提供相应的布局信息：
+
+- initialLayoutAttributesForAppearingItemAtIndexPath:
+- initialLayoutAttributesForAppearingSupplementaryElementOfKind:atIndexPath:
+- initialLayoutAttributesForAppearingDecorationElementOfKind:atIndexPath:
+
+
+- finalLayoutAttributesForDisappearingItemAtIndexPath:
+- finalLayoutAttributesForDisappearingSupplementaryElementOfKind:atIndexPath:
+- finalLayoutAttributesForDisappearingDecorationElementOfKind:atIndexPath:
+
+除了这些方法，您还可以覆盖prepareForCollectionViewUpdates:以处理任何与布局相关的准备。您还可以覆盖finalizeCollectionViewUpdates方法，并使用它将动画添加到整个动画块或实现任何最终的布局相关任务。
+
+#####使用无效上下文优化布局性能
+
+在设计自定义布局时，您可以通过仅使实际更改的布局的那些部分无效来提高性能。当更改项目时，调用invalidateLayout方法会强制集合视图重新计算其所有布局信息并重新应用它。更好的解决方案是仅重新计算已更改的布局信息，这正是无效上下文允许您做的。使用无效上下文可以指定布局的哪些部分更改。布局对象然后可以使用该信息来最小化它重新计算的数据量。
+
+要为布局定义自定义失效上下文，请对UICollectionViewLayoutInvalidationContext类进行子类化。在子类中，定义表示布局数据中可以单独重新计算的部分的自定义属性。当您需要在运行时使布局无效时，创建无效上下文子类的实例，根据更改的布局信息配置自定义属性，并将该对象传递到布局的invalidateLayoutWithContext:方法。您的该方法的自定义实现可以使用无效上下文中的信息仅重新计算布局的已更改的部分。
+
+如果为布局对象定义自定义失效上下文类，则还应覆盖invalidationContextClass方法并返回自定义类。当需要一个无效上下文时，集合视图总是创建您指定的类的实例。从此方法返回自定义子类可确保布局对象始终具有其期望的无效上下文。
+
+
+
